@@ -1,0 +1,93 @@
+<!-- HEADER -->
+<div id="headerSection" ng-include="'explorer_ui/templates/explorertemplates/header.html'"></div>
+
+
+<div class="row">
+    <center>
+        <div class="search-bar-outer">
+            <div class="input-group ">
+                <span class="input-group-addon" style="background-color:#6dcff6; border : 1px solid #a9a9a9"><i class="fa fa-search" aria-hidden="true" style = "color:#eee; font-size:20px"></i></span>
+                <input type="text" class="form-control search-bar" ng-keypress="enterPress($event)" placeholder="Search by Block Id or Event Hash" ng-model="searchText"></input>
+                <span class="input-group-btn">
+            <button class="btn btn-secondary btn-search" type="button" ng-click="search()">Search</button>
+            </span>
+            </div>
+        </div>
+        <div class="row" ng-show="!SearchData">
+            <div class="alert" role="alert">
+                <strong>Wrong Search Parameters</strong>
+            </div>
+        </div>
+    </center>
+</div>
+<div  ng-init="loadBlockDetailsFromBc()">
+
+    <div class="row" style="margin: 2px 0">
+        <div class="col-md-offset-1 col-md-10 col-sm-12 col-xs-12">
+            <h1 style="font-weight:500; color:black; font-size:30px; margin-bottom:0;">Block #{{blockId}}</h1>
+            <div class="well well-sm ellipsis " style="font-size:14px;">
+                <strong>BlockHash</strong>:{{searchBlockDetail.hash}}
+            </div>
+            <div class="clearfix"></div>
+            <h4 style="font-weight:600">Summary</h4>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <table>
+
+                        <tbody>
+                            <tr>
+                                <td class="text-left">No Of Events</td>
+                                <td class="text-right">{{(searchBlockDetail.transactions).length}}</td>
+
+                            </tr>
+                            <tr>
+                                <td class="text-left">Height</td>
+                                <td class="text-right">{{blockId}}</td>
+
+                            </tr>
+                            <tr>
+                                <td class="text-left">Difficulty</td>
+                                <td class="text-right">{{searchBlockDetail.difficulty}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Timestamp</td>
+                                <td class="text-right">{{searchBlockDetail.timestamp}}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Source</td>
+                                <td class="text-right">{{searchBlockDetail.miner}}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Size</td>
+                                <td class="text-right">{{searchBlockDetail.size}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div>
+
+
+        </div>
+    </div>
+
+
+</div>
+<h6 align="center" style="padding-top:30px; font-size:16px;"><a ui-sref='home'> Back to Explorer</a></h6>
+
+</div>
+
+
+<div class="space"></div>
+<div class="space"></div>
+
+<!-- Footer -->
+<div id="footerSection" ng-include="'templates/explorertemplates/footer.html'"></div>

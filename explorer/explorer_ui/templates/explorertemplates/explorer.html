@@ -1,0 +1,146 @@
+<!-- HEADER -->
+<div class="container">
+
+    <div ng-init="getBlockChainInfo()">
+        <img ng-if="loadingHome" class="loader" src="explorer_ui/images/gears.svg"/>
+        <div ng-hide="loadingHome" id="headerSection" ng-include="'explorer_ui/templates/explorertemplates/header.html'"></div>
+        <div id="errorToast">{{searchError}}</div>
+        <div class="row">
+            <div ng-hide="loadingHome" class="row" style="margin-top:5px;">
+                <div class="row">
+                    <center>
+                        <div class=" floating-box difficulty-box">
+                            <div class=" floating-box box1">
+                                <img class="icon" src="explorer_ui/images/difficulty.png"/>
+                            </div>
+                            <div class="vertical-divider"></div>
+                            <div class="floating-box box2">
+                                <div class="box-title">Difficulty</div>
+                                <div class="box-content">{{blockchainDetails.difficulty}}</div>
+                            </div>
+                        </div>
+                        <div class="floating-box hash-box">
+                            <div class="floating-box box1">
+                                <img class="icon" src="explorer_ui/images/hash_rate.png"/>
+                            </div>
+                            <div class="vertical-divider"></div>
+                            <div class="floating-box box2">
+                                <div class="box-title">Hash Rate</div>
+                                <div class="box-content">{{blockchainDetails.hashRate / 1000000 | number : 2}} MHz </div>
+                            </div>
+                        </div>
+                        <div class="floating-box time-box">
+                            <div class="floating-box box1">
+                                <img class="icon" src="explorer_ui/images/blocktime.png"/>
+                            </div>
+                            <div class="vertical-divider"></div>
+                            <div class="floating-box box2">
+                                <div class="box-title">Block Time</div>
+                                <div class="box-content">{{blockchainDetails.avgBlockTime}} ms</div>
+                            </div>
+                        </div>
+                    </center>
+                </div>
+
+                <div>
+                    <center>
+                        <div class="search-bar-outer">
+                            <div class="input-group ">
+                                <span class="input-group-addon" style="background-color:#6dcff6; border : 1px solid #a9a9a9"><i class="fa fa-search" aria-hidden="true" style = "color:#eee; font-size:20px"></i></span>
+                                <input type="text" class="form-control search-bar" ng-keypress="enterPress($event)" placeholder="Search by Block Id or Event Hash" ng-model="searchText"></input>
+                                <span class="input-group-btn">
+            <button class="btn btn-secondary btn-search" type="button" ng-click="search()">Search</button>
+            </span>
+                            </div>
+                        </div>
+                        <!--<div ng-include="'templates/explorertemplates/blockdetails.html'" ng-show="isSearch"></div>-->
+                        <!--<div ng-hide="isSearch" class="row" style="margin:0%; width:100%; border-top:1px solid #dddddd; " >-->
+                        <div class="space"></div>
+                        <div class="row" style="margin:0%;">
+                            <div class="col-md-offset-1 col-md-10 col-sm-12" style="padding:0">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a data-toggle="tab" href="#recentBlock">Recent Blocks</a></li>
+                                    <li><a data-toggle="tab" href="#menu1">Recent Events</a></li>
+                                </ul>
+
+                                <div class="tab-content" style="margin-top:3px;">
+                                    <div id="recentBlock" class="tab-pane fade in active">
+                                        <div >  <!-- ng-init="loadBlocks()"-->
+                                            <!--<h3>Recent Blocks</h3>-->
+                                            <div ng-hide="!BlockData">
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <th> Block </th>
+                                                            <th> Hash </th>
+                                                            <th>Events </th>
+                                                            <th> Difficulty </th>
+                                                            <th> Timestamp </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="table-mobile" ng-repeat="block in blockList | orderBy :'-number'">
+                                                            <td class="td-item"><a ui-sref='block({blockNumber:block.number})' class="underline">{{block.number}}</a></td>
+                                                            <td class="td-item ellipsis" style="text-overflow:clip">{{block.hash}}</td>
+                                                            <td class="td-item">{{block.transactions.length}}</td>
+                                                            <td class="td-item">{{block.difficulty }}</td>
+                                                            <td class="td-item">{{block.timestamp *1000 |  date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="row" ng-show="!BlockData">
+                                                <div class="alert" role="alert">
+                                                    <strong>No blocks available.</strong>
+                                                </div>
+                                            </div>
+                                            <!--img ng-if="loadingBlock" src="./../images/ring.svg"-->
+
+                                        </div>
+                                    </div>
+                                    <div id="menu1" class="tab-pane fade">
+                                        <div id="recentBlock" class="tab-pane fade in active" > <!--ng-init="loadTransactions()"-->
+                                            <!--<h3>Recent Events</h3>-->
+                                            <div ng-hide="!TxData">
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+
+                                                            <th> Hash </th>
+                                                            <th > Block </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="Tx in TxList | orderBy :'-blockNumber'"  >
+                                                            <td class="td-item"><a ui-sref='transaction({hash:Tx.transactionHash})' class="underline">{{Tx.transactionHash}}</a></td>
+                                                            <td class = "td-item">{{Tx.blockNumber }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="row" ng-show="!TxData">
+                                                <div class="alert" role="alert">
+                                                    <strong>No Events.</strong>
+                                                </div>
+                                            </div>
+                                            <img ng-if="loadingTransactions" src="explorer_ui/images/ring.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </center>
+
+                </div>
+                <div class="space"></div>
+                <div class="space"></div>
+                <div class="space"></div>
+                <div class="space"></div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div ng-hide="loadingHome" id="footerSection" ng-include="'explorer_ui/templates/explorertemplates/footer.html'"></div>
+
+    </div>

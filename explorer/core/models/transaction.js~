@@ -1,0 +1,30 @@
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+
+var TransactionSchema = new Schema({
+        address   : {type: String,required: true},
+        transactionHash : {type:String,required:true,index: { unique: true }},
+		data  : {type:String, required:true},
+        blockNumber  : {type:Number, required:true},
+        logIndex  : {type:Number, required:true},
+        blockHash:{type:String, required:true},
+        transactionIndex:{type:Number, required:true},
+        topics:[{type: String}]
+    });
+
+TransactionSchema.pre('save',function(next){
+		var tx = this;
+      //  Block.remove();
+		console.log("InsideModel",tx);
+		next();
+	   
+	});
+
+
+
+// the schema is useless so far
+var Transaction = mongoose.model('Transaction', TransactionSchema);
+
+// make this available to our users in our Node applications
+module.exports = Transaction;

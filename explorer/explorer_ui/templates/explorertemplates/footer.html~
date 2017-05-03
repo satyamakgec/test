@@ -1,0 +1,40 @@
+<div class="clearfix"></div>
+<!-- #BeginLibraryItem "/Library/footer.lbi" -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8">
+                <div class="link_area">
+                    <div class="visible-xs text-center shownext hand mb15">
+                        <p class="fs25 ttu poppins weight300 white">Navigation</p>
+                        <p class="mt5"><img src="explorer_ui/images/d-arr.png" alt=""></p>
+                    </div>
+
+                    <div class="footer_dis">
+                        <div class="footer_link">
+                            <a href="about-us.htm" title="About">About</a>
+                            <a href="governance.htm" title="Governance">Governance</a>
+                            <a href="security.htm" title="Security">Security</a>
+                            <a href="api.htm" title="API">API</a>
+                            <a href="terms-of-use.htm" title="Terms Of Use">Terms Of Use</a>
+                            <a href="data-protection.htm" title="Data Protection">Data Protection</a>
+                            <a href="blog.htm" title="Blog">Blog</a>
+                            <a href="contact-us.htm" title="Contact Us">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-2">
+                <div class="ft_social">
+                    <a href="javascript:void(0)" title="Facebook" class="img_scale"><img src="explorer_ui/images/f2.png" alt=""></a>
+                    <a href="javascript:void(0)" title="Twitter" class="img_scale"><img src="explorer_ui/images/t2.png" alt=""></a>
+                    <a href="javascript:void(0)" title="Google Plus" class="img_scale"><img src="explorer_ui/images/g2.png" alt=""></a>
+                    <a href="javascript:void(0)" title="Linkedin" class="img_scale"><img src="./../images/in2.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-2">
+                <div class="copyright_sec">© 2016 - 2017 AG. All Rights Reserved.</div>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,5 @@
+module.exports={
+		"port" : process.env.port||4000,
+		"database" : 'mongodb://localhost:27017/blockchainExplorer',
+	    "secretKey":'secretkeyhyperledger'
+}; 

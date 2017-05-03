@@ -1,0 +1,65 @@
+var Block = require('../models/block');
+var Q = require('q');
+
+module.exports.storeBlocks = function (blockArray) {
+   var defered = Q.defer();
+    console.log("Inside dao:",blockArray);
+
+    Block.insertMany(blockArray,function(err,blocks){
+        if(err){
+            console.log("Error in Block Dao",err);
+            defered.reject(err);
+        }else{
+            console.log(blocks);
+            defered.resolve(blocks);
+        }
+    });
+   return defered.promise;
+}
+
+
+module.exports.getAllBlocks = function () {
+   var defered = Q.defer();
+    var projection = {    
+        "difficulty" : true,
+        "hash" : true,
+        "number" : true,
+        "size" : true,
+        "timestamp" : true,
+        "transactions" : true
+    }
+    Block.find({} , projection , function(err,blocks){
+        if(err){
+            console.log("Error in Blocks Dao",err);
+            defered.reject(err);
+        }else{
+            console.log(blocks);
+            defered.resolve(blocks);
+        }
+    });
+   return defered.promise;
+}
+
+module.exports.getBlock = function (bNo) {
+   var defered = Q.defer();
+    var projection = {    
+        "difficulty" : true,
+        "hash" : true,
+        "number" : true,
+        "size" : true,
+        "timestamp" : true,
+        "transactions" : true,
+        "miner" : true,
+        "gasLimit" : true
+    }
+    Block.findOne({"number":bNo} , projection , function(err,block){
+        if(err){
+            console.log("Error in Consumer Dao",err);
+            defered.reject(err);
+        }else{
+            console.log(block);
+            defered.resolve(block);
+        }
+    });
+   return defered.promise;
+}

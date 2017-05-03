@@ -1,0 +1,395 @@
+.loader{
+       margin-top: 45vh;
+       margin-left: 48%;
+}
+
+html{
+      font-family: 'Open Sans', sans-serif;
+}
+table { 
+  width: 100%; 
+  border-collapse: collapse; 
+}
+/* Zebra striping */
+/*tr:nth-of-type(odd) { 
+  background: #eee; 
+}*/
+
+td, th { 
+  padding: 10px; 
+  border-top: 1px solid #ccc; 
+  text-align: left; 
+  color:black;
+}
+td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size:14px;
+}
+th { 
+  background: white; 
+  color: black;
+  font-weight:500; 
+  padding-bottom:0px;
+  padding-left:10px;
+  border:none;
+  font-size:14px;
+}
+.td-item{
+      font-size:12px;
+      border:none;
+}
+.underline{
+     text-decoration: underline;
+     color:#459ba8 !important;
+}
+.space{
+      padding: 10px 0px;
+}
+.floating-box {
+    display: inline-block;
+    width: 327px;
+    height: 80px;
+    margin: 35px;
+    margin-top:20px;
+    margin-bottom:10px;
+    border: 3px solid #aaa;  
+}
+.floating-box .box1{
+   width:30%;
+   height:inherit;
+   background-color:transparent;
+   border:none;
+   margin:0;
+   padding:0;
+   float:left;
+  
+}
+.floating-box .box1 .icon{
+    margin:0;
+    padding: 0;
+    padding-left: 18px;
+    padding-top: 15px;
+    height:60px;
+    width:60px;
+  
+}
+
+.vertical-divider{
+    width: 1px;
+    background-color: white;
+    height: 45px;
+    margin-top: 15px;
+    float: left;
+    margin-left: 20px;
+}
+.floating-box .box2{
+   width:60%;
+   height:inherit;
+   background-color:transparent;    
+   border:none;
+   margin:0;
+   padding:0;
+   float:left;
+}
+
+.floating-box .box2 .box-title{
+      color:#fff;
+      font-size:18px;
+      font-weight:500;
+      margin:0;
+      padding:0;
+      padding-left:15px; 
+      padding-top:14px;
+      text-align:left;   
+}
+.floating-box .box2 .box-content{
+      color:#fff;
+      font-size:18px;
+      font-weight:300;
+      margin:0;
+      padding:0;
+      padding-left:15px; 
+      padding-top:6px; 
+      text-align:left;    
+}
+.difficulty-box{
+      background-color:#00a5e7;
+      border-color:#4dccff;
+      border-width:3px;
+}
+.hash-box{
+      background-color:#e2ae00;
+      border-color:#ffd855;
+      border-width:3px;
+}
+.time-box{
+      background-color:#1cbcb4;
+      border-color:#72fff9;
+      border-width:3px;
+}
+.search-bar-outer{
+    padding:3%;
+    padding-bottom:0;
+    width:50%;
+
+}
+.search-bar{
+      border:1px solid #a9a9a9 !important;
+      outline:none !important;
+      background-color:#ebebeb !important;
+      font-size:12px;
+}
+.search-bar:focus, .search-bar:active{
+       border:none !important;
+       
+}
+.btn-search{
+      padding:6px 25px;  
+      /*border: 1px solid #007acc;*/
+      color:#fff;
+      background-color:#6dcff6;
+      border-radius:0;
+      border: 1px solid #a9a9a9;
+}
+.btn-search:hover, .btn-search:active, .btn-search:focus{
+    
+      color:#fff;
+      background-color:rgba(0, 172, 230,1);
+}
+.nav-tabs {
+     border-bottom: 1px solid #aaa; 
+}
+.nav-tabs > li {
+    /* width = (100 / number of tabs). This example assumes 3 tabs. */
+    width:50%;
+    font-size:14px;
+    color:black;
+}
+
+
+.nav-tabs>li>a {
+    margin-right: 2px;
+    border:none !important;
+     color:black;
+   
+}
+.nav-tabs>li.active>a{
+    color:black;  
+    margin-right: 2px;
+    padding-bottom:2px;
+    border:none !important;
+    border-bottom: 8px solid #6dcff6 !important;
+    border-radius: 4px 4px 0 0;
+}
+.text-left{
+    font-weight:600;
+    text-align:left !important;
+    padding-left:3px !important;
+}
+
+.text-right{
+    color:#737373;
+    text-align:right !important;
+    padding-right:3px !important;
+}
+
+.ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+#errorToast {
+    visibility: hidden;
+    min-width: 250px;
+    max-height: 50px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 30px;
+    font-size: 17px;
+}
+
+#errorToast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+
+/*MOBILE POTRAIT*/
+@media all and (max-width: 479px) {
+.loader{
+       margin-top: 45vh;
+       margin-left: 43%;
+}
+		/* Force table to not be like tables anymore */
+table, thead, tbody, th, td, tr { 
+	display: block; 
+}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+thead tr { 
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+}
+	
+tr { 
+      border: 1px solid #ccc; }
+	
+td { 
+		/* Behave  like a "row" */
+	border: none;
+	position: relative;
+	padding-left: 50%; 
+}
+	
+td:before { 
+	/* Now like a table header */
+	position: absolute;
+	/* Top/left values mimic padding */
+	top: 6px;
+	left: 6px;
+	width: 45%; 
+	padding-right: 10px; 
+	white-space: nowrap;
+}
+	
+.table-mobile > td:nth-of-type(1):before { content: "Block"; }
+.table-mobile >td:nth-of-type(2):before { content: "Hash"; }
+.table-mobile >td:nth-of-type(3):before { content: "No Of Events"; }
+.table-mobile >td:nth-of-type(4):before { content: "Difficulty"; }
+.table-mobile >td:nth-of-type(5):before { content: "Timestamp"; }
+
+
+.floating-box {
+    display: inline-block;
+    width: 310px;
+    height: 60px;
+    margin: 0px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    border: 3px solid #aaa 
+}
+.floating-box .box1{
+   width:30%;
+   height:inherit;
+   background-color:transparent;
+   border:none;
+   margin:0;
+   padding:0;
+   float:left;
+  
+}
+.floating-box .box1 .icon{
+      margin: 0;
+    padding: 0;
+    padding-left: 18px;
+    padding-top: 7px;
+    height: 50px;
+    width: 60px;
+  
+}
+
+.vertical-divider{
+     width: 1px;
+    background-color: white;
+    height: 35px;
+    margin-top: 10px;
+    float: left;
+    margin-left: 20px;
+}
+.floating-box .box2{
+   width:60%;
+   height:inherit;
+   background-color:transparent;    
+   border:none;
+   margin:0;
+   padding:0;
+   float:left;
+}
+
+.floating-box .box2 .box-title{
+       color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+    padding-left: 15px;
+    padding-top: 5px;
+    text-align: left;  
+}
+.floating-box .box2 .box-content{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    padding-left: 15px;
+    padding-top: 6px;
+    text-align: left;   
+}
+.difficulty-box{
+      background-color:#0099ff;
+      border-color:#66c2ff;
+      border-width:3px;
+}
+.hash-box{
+      background-color:#cca300;
+      border-color:#ffd633;
+      border-width:3px;
+}
+.time-box{
+      background-color:#00b3b3;
+      border-color:#00ffff;
+      border-width:3px;
+}
+.search-bar-outer{
+    padding-top:5px;
+    width: 310px;
+    margin: 0;
+}
+.btn-search{
+      padding:6px 1px;  
+      /*border: 1px solid #007acc;*/
+      color:#fff;
+      background-color:rgba(0, 172, 230,.7);
+      border-radius:0;
+      border: 1px solid #a9a9a9;
+}
+.ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+}
